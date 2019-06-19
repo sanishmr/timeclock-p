@@ -34,5 +34,15 @@ public class PunchServiceImpl implements PunchService {
         punchRepository.delete(getPunchById(id));
     }
 
+    @Override
+    public Iterable<Punch>  getPunchByEmployeeId(String employeeid) {
+       return punchRepository.findByEmployeeId(employeeid);
+    }
+
+    @Override
+    public Iterable<Punch> getPunchByQuery(Integer storeId, String deviceId) {
+        return punchRepository.findByStoreIdAndDeviceId(storeId,deviceId);
+    }
+
 
 }

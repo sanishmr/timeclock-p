@@ -10,4 +10,6 @@ public interface PunchService {
     List<Punch> getAllPunches();
     Punch savePunch(Punch punch);
     void deletePunch(Integer id);
+    Iterable<Punch> getPunchByEmployeeId(String employeeId);
+    Iterable<Punch> getPunchByQuery (Integer storeId, String deviceId);
 }

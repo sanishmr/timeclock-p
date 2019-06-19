@@ -7,5 +7,7 @@ import org.springframework.stereotype.Repository;
 @Repository("punchRepository")
 public interface PunchRepository extends JpaRepository<Punch, Integer> {
 
+    Iterable<Punch> findByEmployeeId(String employeeId);
+    Iterable<Punch> findByStoreIdAndDeviceId(Integer storeId, String deviceId );
 
 }

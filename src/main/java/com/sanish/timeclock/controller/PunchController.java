@@ -24,14 +24,28 @@ public class PunchController {
 
         return punchService.getPunchById(id);
     }
-    @RequestMapping(value = "/addpunch", method = RequestMethod.POST)
+
+    @RequestMapping(value = "/punch/employee")
+    public Iterable<Punch>  searchPunchByEmployee(@RequestParam("employee") String employeeid){
+        return punchService.getPunchByEmployeeId(employeeid);
+
+    }
+
+
+    @RequestMapping(value = "/punch/search")
+    public Iterable<Punch>  searchPunch(@RequestParam(value = "storeId") Integer storeId , @RequestParam(value = "deviceId") String deviceId){
+        return punchService.getPunchByQuery(storeId,deviceId);
+
+    }
+
+    @RequestMapping(value = "/punch", method = RequestMethod.POST)
     public Punch addPunch(@Valid @RequestBody Punch punch){
 
 
         return punchService.savePunch(punch);
     }
 
-    @RequestMapping(value = "/updatepunch/{id}", method = RequestMethod.PUT)
+    @RequestMapping(value = "/punch/{id}", method = RequestMethod.PUT)
     public Punch editPunch(@PathVariable("id") Integer id, @Valid @RequestBody Punch punch) {
 
         punch.setPunchId(id);
@@ -39,7 +53,7 @@ public class PunchController {
 
     }
 
-    @RequestMapping(value = "/deletepunch/{id}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/punch/{id}", method = RequestMethod.DELETE)
     public  void removePunch(@PathVariable("id") Integer id) {
         punchService.deletePunch(id);
 

@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 
 
 @Entity
-@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Punch {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,10 +26,12 @@ public class Punch {
     private String punchType;
     private String employeeId;
     private Integer storeId;
+    private String deviceId;
 
     public Punch() {
         super();
     }
+
     /**
      * Creates a new instance of Punch for the current date and time
      */
@@ -58,7 +60,7 @@ public class Punch {
         return punchTime;
     }
 
-    public void setPunchTime(LocalDateTime       punchTime) {
+    public void setPunchTime(LocalDateTime punchTime) {
         this.punchTime = punchTime;
     }
 
@@ -84,5 +86,13 @@ public class Punch {
 
     public void setStoreId(Integer storeId) {
         this.storeId = storeId;
+    }
+
+    public String getDeviceId() {
+        return deviceId;
+    }
+
+    public void setDeviceId(String deviceId) {
+        this.deviceId = deviceId;
     }
 }
